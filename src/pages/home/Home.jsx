@@ -1,23 +1,14 @@
 import React from 'react';
 import News from '../../components/news/News';
+import Articles from '../articles/Articles';
+import NewsDetails from '../news-details/NewsDetails';
 import './Home.scss';
 
-const Home = () => {
+const Home = ({news, category}) => {
     return (
         <div className='home'>
             <div className="container">
-                <div className="news-card-container">
-                    <News />
-                    <News />
-                    <News />
-                    <News />
-                    <News />
-                    <News />
-                    <News />
-                    <News />
-                    <News />
-                    <News />
-                </div>
+                <Articles category={category} news={news} />
             </div>
         </div>
     )

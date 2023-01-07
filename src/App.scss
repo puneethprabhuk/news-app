@@ -11,6 +11,7 @@
 }
 
 .btn {
+    display: block;
     background-color: #000;
     border-radius: 15px;
     border: none;
@@ -18,5 +19,27 @@
     color: #fff;
     padding: .6em 1.2em;
     font-size: .75rem;
+    text-decoration: none;
     cursor: pointer;
+    transition: .3s all ease;
+}
+
+.btn:hover {
+    background-color: #333;
+}
+
+.link {
+    color: grey;
+    text-decoration: none;
+}
+
+.loading {
+    position: absolute;
+    top: 0;
+    left: 0;
+    height: 100vh;
+    width: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
 }

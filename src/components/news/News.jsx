@@ -1,26 +1,38 @@
 import React from 'react';
 import './News.scss';
+import moment from 'moment';
+import { json, Link } from 'react-router-dom';
 
-const News = () => {
+
+const News = ({ article, category }) => {
+    const setNews = (news) => {
+        localStorage.clear();
+        localStorage.setItem('news', JSON.stringify(news));
+    }
     return (
-        <div className="news-card">
+        <>{article && article.title && article.content && article.url ? <div className="news-card">
             <div className="news-img">
-                <img src="https://ichef.bbc.co.uk/wwhp/624/cpsprodpb/15B46/production/_128220988_mediaitem128220987.jpg" alt="" />
+                <img src={article.urlToImage} alt="" />
             </div>
             <div className="news-container">
                 <div className="news-brief">
-                    <div className="news-date">Jan 8, 2023</div>
-                    <div className="news-category">World</div>
+                    <div className="news-date">{moment(article.publishedAt.toString()).format('MMM D, YYYY')}</div>
+                    <div className="news-category">{category}</div>
                 </div>
-                <h2 className='news-headline'>Harry: I was bigoted before Meghan</h2>
+                <h2 className='news-headline'>{article.title.substring(0, 30)}...</h2>
                 <div className="news-content">
-                    Lorem ipsum dolor sit amet consectetur adipisicing elit. Provident, explicabo voluptatum nostrum assumenda quas delectus temporibus repudiandae aliquam doloribus in!
+                    {article.content ? article.content.substring(0, 150) : ''}...
                 </div>
                 <div className="news-footer">
-                    <button className='btn'>Read</button>
+                    <div className='news-source'>
+                        <span>Source: </span>
+                        <a target="_blank" href={article.url}>{article.source.name}</a>
+                    </div>
+                    <Link className='btn' to="read" onClick={() => setNews(article)}>Read</Link>
                 </div>
             </div>
-        </div>
+        </div> : ''}
+        </>
     )
 }
 

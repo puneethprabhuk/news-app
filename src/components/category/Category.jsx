@@ -1,44 +1,45 @@
 import React from 'react';
 import './Category.scss';
+import moment from 'moment';
+import { Link } from 'react-router-dom';
 
-const Category = () => {
+
+const Category = (props) => {
+    const date = new Date();
     return (
         <div className='category'>
             <div className="container">
+                <div className='mobile-date'>
+                    <div className="category-item">
+                        <div className="day">{moment(date.toString()).format('dddd')}</div>
+                        <div className="date">{moment(date.toString()).format('MMM D, YYYY')}</div>
+                    </div>
+                </div>
                 <div className="category-container">
-                    <div className="category-item">
-                        <div className="day">Sunday</div>
-                        <div className="date">8 Jan 2023</div>
+                    <div className="category-item date-day">
+                        <div className="day">{moment(date.toString()).format('dddd')}</div>
+                        <div className="date">{moment(date.toString()).format('MMM D, YYYY')}</div>
                     </div>
                     <div className="category-item">
-                        <span>World</span>
+                        <Link className='link' to="/" onClick={() => props.getSelectedNews('general')}>General</Link>
                     </div>
                     <div className="category-item">
-                        <span>Politics</span>
+                        <Link className='link' to="/" onClick={() => props.getSelectedNews('business')}>Business</Link>
                     </div>
                     <div className="category-item">
-                        <span>Business</span>
+                        <Link className='link' to="/" onClick={() => props.getSelectedNews('entertainment')}>Entertainment</Link>
                     </div>
                     <div className="category-item">
-                        <span>Sports</span>
+                        <Link className='link' to="/" onClick={() => props.getSelectedNews('health')}>Health</Link>
                     </div>
                     <div className="category-item">
-                        <span>Music</span>
+                        <Link className='link' to="/" onClick={() => props.getSelectedNews('science')}>Science</Link>
                     </div>
                     <div className="category-item">
-                        <span>Tech</span>
+                        <Link className='link' to="/" onClick={() => props.getSelectedNews('technology')}>Technology</Link>
                     </div>
                     <div className="category-item">
-                        <span>Science</span>
-                    </div>
-                    <div className="category-item">
-                        <span>Health</span>
-                    </div>
-                    <div className="category-item">
-                        <span>Entertainment</span>
-                    </div>
-                    <div className="category-item">
-                        <span>Stocks</span>
+                        <Link className='link' to="/" onClick={() => props.getSelectedNews('sports')}>Sports</Link>
                     </div>
                 </div>
             </div>
