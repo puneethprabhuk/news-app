@@ -9,7 +9,7 @@ const Footer = () => {
         <div className='copyright'>
           &copy; 2023 All Rights Reserved
         </div>
-        <div>API Credit: <a href="https://newsapi.org">News API</a></div>
+        <div>API Credit: <a href="https://newsapi.org" target='_blank'>News API</a></div>
       </div>
     </div>
   )
